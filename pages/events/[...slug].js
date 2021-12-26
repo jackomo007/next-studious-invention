@@ -24,7 +24,7 @@ const FilteredEventsPage = () => {
     isNaN(numYear) ||
     isNaN(numMonth) ||
     numYear > 2030 ||
-    numYear < 2021 ||
+    numYear < 2022 ||
     numMonth < 1 ||
     numMonth > 12
   ) {
