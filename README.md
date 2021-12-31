@@ -8,7 +8,7 @@ First, clone the repository
 Then, install the dependencies
 
 ```bash
-npm run dev
+npm i
 # or
 yarn
 ```
