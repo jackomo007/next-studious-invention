@@ -1,9 +1,18 @@
+import Head from "next/head";
+
 import EventList from "../components/events/event-list";
 import { getFeaturedEvents } from "../helpers/api-util";
 
 const HomePage = (props) => {
   return (
     <>
+      <Head>
+        <title>Awesome NextJs Events</title>
+        <meta
+          name="description"
+          content="Awesome app build it in Nextjs to learn the framework of Reactjs"
+        />
+      </Head>
       <h1 className="center">Home Page</h1>
       <EventList items={props.events} />
     </>
@@ -12,15 +21,14 @@ const HomePage = (props) => {
 
 export async function getStaticProps(context) {
   const featuredEvents = await getFeaturedEvents();
-  const  secondsToRefresh = 1800
-  
+  const secondsToRefresh = 1800;
+
   return {
     props: {
-      events: featuredEvents
+      events: featuredEvents,
     },
-    revalidate: secondsToRefresh
-  }
+    revalidate: secondsToRefresh,
+  };
 }
-
 
 export default HomePage;

@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import EventContent from "../../components/event-detail/event-content";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventSummary from "../../components/event-detail/event-summary";
@@ -7,13 +9,19 @@ const EventDetailsPage = (props) => {
   const event = props.selectedEvent;
 
   if (!event) {
-    return <div className="center">
+    return (
+      <div className="center">
         <p>Loading...</p>;
       </div>
+    );
   }
 
   return (
     <>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
@@ -32,13 +40,13 @@ export async function getStaticProps(context) {
   const eventId = context.params.eventId;
 
   const event = await getEventById(eventId);
-  const  secondsToRefresh = 30
+  const secondsToRefresh = 30;
 
   return {
     props: {
       selectedEvent: event,
     },
-    revalidate: secondsToRefresh
+    revalidate: secondsToRefresh,
   };
 }
 
@@ -49,7 +57,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths,
-    fallback: 'blocking'
+    fallback: "blocking",
   };
 }
 
