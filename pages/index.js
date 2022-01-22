@@ -10,7 +10,7 @@ const HomePage = (props) => {
   );
 };
 
-export function getStaticProps(context) {
+export async function getStaticProps(context) {
   const featuredEvents = await getFeaturedEvents();
   const  secondsToRefresh = 1800
   

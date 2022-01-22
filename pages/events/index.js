@@ -22,13 +22,13 @@ const AllEventsPage = (props) => {
 
 export async function getStaticProps() {
   const events = await getAllEvents();
-  const  secondsToRefresh = 60
+  const secondsToRefresh = 60;
 
   return {
     props: {
       events: events,
     },
-    revalidate: secondsToRefresh
+    revalidate: secondsToRefresh,
   };
 }
 
